@@ -1,0 +1,34 @@
+﻿@page
+@model csharp_oop_fundamentals.FormaPagamentoModel
+@{
+    ViewData[index: "title"] = "Formas de Pagamentos";
+}
+
+<div class="row justify-content-center g-4">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header">
+                <h2>Forma de Pagamento</h2>
+            </div>
+            <form method="post" class="form-control">
+                <label class="mb-3">Forma de Pagemento</label>
+                <input asp-for="NomeFormaPagamento" type="text" class="form-control mb-3" />
+                <button type="submit" class="btn btn-primary w-100 mb-3">Cadastrar Forma Pagamento</button>
+
+                @* <button type="submit" class="btn btn-primary w-100">Cadatrar Produto</button> *@
+            </form>
+        </div>
+    </div>
+
+    @* Lista Formas Pagamentos *@
+    <div class="col-md-7">
+        <div class="card shadow-sm">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4 class="mb-0">Formas de Pagamentos cadastrados</h4>
+                <span class="badge bg-secondary">@Model.FormaPagamentoList.Count</span>
+            </div>
+            <div class="card-body p-0">
+            </div>
+        </div>
+    </div>
+</div>

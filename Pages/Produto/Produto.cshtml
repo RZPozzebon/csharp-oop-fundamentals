@@ -1,0 +1,72 @@
+﻿@page
+@model csharp_oop_fundamentals.Pages.Produto.ProdutoModel
+@{
+    ViewData["Title"] = "Produtos";
+}
+
+<div class="row justify-content-center g-4">
+
+    @* ----- Formulário de cadastro ----- *@
+    <div class="col-md-5">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h4 class="mb-0">Cadastrar Produto</h4>
+            </div>
+            <form method="post">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label asp-for="Nome" class="form-label">Nome do Produto</label>
+                        <input asp-for="Nome" class="form-control" placeholder="Digite o nome" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Valor" class="form-label">Valor (R$)</label>
+                        <input asp-for="Valor" type="number" step="0.01" class="form-control" placeholder="0,00" />
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary w-100">Cadastrar Produto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @* ----- Lista de produtos ----- *@
+    <div class="col-md-7">
+        <div class="card shadow-sm">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4 class="mb-0">Produtos cadastrados</h4>
+                <span class="badge bg-secondary">@Model.Produtos.Count</span>
+            </div>
+            <div class="card-body p-0">
+                @if (Model.Produtos.Count == 0)
+                {
+                    <p class="text-muted text-center my-4">Nenhum produto cadastrado ainda.</p>
+                }
+                else
+                {
+                    <table class="table table-striped table-hover mb-0 align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col" class="text-end">Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var produto in Model.Produtos)
+                            {
+                                <tr>
+                                    <td>@produto.Id</td>
+                                    <td>@produto.Nome</td>
+                                    <td class="text-end">@produto.Valor.ToString("C")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
