@@ -1,0 +1,161 @@
+﻿@page
+@model csharp_oop_fundamentals.Pages.Funcionario.FuncionariosModel
+@using csharp_oop_fundamentals.Models.Enums
+@{
+    ViewData["Title"] = "Funcionários";
+}
+
+<div class="row justify-content-center g-4">
+
+    @* ----- Formulário de cadastro ----- *@
+    <div class="col-md-5">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h4 class="mb-0">Cadastrar Funcionário</h4>
+            </div>
+            <form method="post">
+                <div class="card-body">
+
+                    @if (TempData["Sucesso"] is string msg)
+                    {
+                        <div class="alert alert-success" role="alert">@msg</div>
+                    }
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Input.Nome" class="form-label"></label>
+                        <input asp-for="Input.Nome" class="form-control" placeholder="Digite o nome" />
+                        <span asp-validation-for="Input.Nome" class="text-danger"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-4 mb-3">
+                            <label asp-for="Input.Idade" class="form-label"></label>
+                            <input asp-for="Input.Idade" class="form-control" />
+                            <span asp-validation-for="Input.Idade" class="text-danger"></span>
+                        </div>
+                        <div class="col-8 mb-3">
+                            <label asp-for="Input.Telefone" class="form-label"></label>
+                            <input asp-for="Input.Telefone" class="form-control" placeholder="(41) 99999-9999" />
+                            <span asp-validation-for="Input.Telefone" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Input.Email" class="form-label"></label>
+                        <input asp-for="Input.Email" class="form-control" placeholder="nome@email.com" />
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Input.Endereco" class="form-label"></label>
+                        <input asp-for="Input.Endereco" class="form-control" placeholder="Rua, número, bairro" />
+                        <span asp-validation-for="Input.Endereco" class="text-danger"></span>
+                    </div>
+
+                    <fieldset class="mb-3">
+                        <legend class="form-label fs-6">Sexo</legend>
+
+                        <div class="form-check">
+                            <input type="radio" asp-for="Input.Sexo" value="M" id="masculino"
+                                   class="form-check-input" />
+                            <label for="masculino" class="form-check-label">Masculino</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input type="radio" asp-for="Input.Sexo" value="F" id="feminino" class="form-check-input" />
+                            <label for="feminino" class="form-check-label">Feminino</label>
+                        </div>
+                        <span asp-validation-for="Input.Sexo" class="text-danger"></span>
+                    </fieldset>
+
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <label asp-for="Input.Periodo" class="form-label"></label>
+                            <select asp-for="Input.Periodo" asp-items="Html.GetEnumSelectList<Periodo>()"
+                                    class="form-select">
+                                <option value="">Selecione...</option>
+                            </select>
+                            <span asp-validation-for="Input.Periodo" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-6 mb-3">
+                            <label asp-for="Input.TipoContrato" class="form-label"></label>
+                            <select asp-for="Input.TipoContrato" asp-items="Html.GetEnumSelectList<TipoContrato>()"
+                                    class="form-select">
+                                <option value="">Selecione...</option>
+                            </select>
+                            <span asp-validation-for="Input.TipoContrato" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Input.Salario" class="form-label"></label>
+                        <div class="input-group">
+                            <span class="input-group-text">R$</span>
+                            <input asp-for="Input.Salario" class="form-control" placeholder="0,00" />
+                        </div>
+                        <span asp-validation-for="Input.Salario" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="bi bi-save me-1"></i>Cadastrar Funcionário
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @* ----- Lista de funcionários ----- *@
+    <div class="col-md-7">
+        <div class="card shadow-sm">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4 class="mb-0">Funcionários cadastrados</h4>
+                <span class="badge bg-secondary">@Model.Funcionarios.Count</span>
+            </div>
+            <div class="card-body p-0">
+                @if (Model.Funcionarios.Count == 0)
+                {
+                    <p class="text-muted text-center my-4">Nenhum funcionário cadastrado ainda.</p>
+                }
+                else
+                {
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover mb-0 align-middle">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Período</th>
+                                    <th scope="col">Contrato</th>
+                                    <th scope="col">Salário</th>
+                                    <th scope="col">Sexo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var f in Model.Funcionarios)
+                                {
+                                    <tr>
+                                        <td>@f.Id</td>
+                                        <td>@f.Nome</td>
+                                        <td>@f.Periodo</td>
+                                        <td>@f.TipoContrato</td>
+                                        <td>@f.Salario.ToString("C")</td>
+                                        <td>@(f.Sexo == "M" ? "Masculino" : "Feminino")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

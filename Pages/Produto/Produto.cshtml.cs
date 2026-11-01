@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -15,9 +16,13 @@ namespace csharp_oop_fundamentals.Pages.Produto
 
         // Campos vindos do formulário (ligados pelos asp-for na view).
         [BindProperty]
+        [Required(ErrorMessage = "Nome do Produto é obrigatório.")]
         public string Nome { get; set; } = "";
 
         [BindProperty]
+        [Required(ErrorMessage = "Valor do produto é obrigatório.")]
+        [Range(0.01, 999999.99, ErrorMessage = "O preço deve ser maior que zero.")]
+        [DisplayFormat(DataFormatString = "{0:N2}", ApplyFormatInEditMode = true)]
         public decimal Valor { get; set; }
 
         // Lista exibida na tabela.
@@ -30,6 +35,13 @@ namespace csharp_oop_fundamentals.Pages.Produto
 
         public IActionResult OnPost()
         {
+            if (Valor == 0)
+            {
+                ModelState.AddModelError("Valor", "O preço deve ser maior que zero.");
+            }
+            if (!ModelState.IsValid)
+                return Page();
+
             var novoId = _produtos.Count == 0 ? 1 : _produtos.Max(p => p.Id) + 1;
 
             _produtos.Add(new Models.Produto
