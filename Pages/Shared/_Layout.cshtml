@@ -1,21 +1,24 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/csharp_oop_fundamentals.styles.css" asp-append-version="true" />
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">csharp_oop_fundamentals</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -27,35 +30,37 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Segunda Pagina</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area=""  asp-page="/Cliente/Cliente">Clientes</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Cliente/Cliente">Clientes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area=""  asp-page="/Produto/Produto">Produtos</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Produto/Produto">Produtos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area=""  asp-page="/FormaPagamento/FormaPagamento">Formas de Pagamentos</a>
-                        </li>
-                    </ul>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/FormaPagamento/FormaPagamento">Formas
+                                de Pagamentos</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
+            </nav>
+        </header>
         <div class="container">
-            &copy; 2026 - csharp_oop_fundamentals - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
         </div>
-    </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2026 - csharp_oop_fundamentals - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            </div>
+        </footer>
 
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
+
 </html>
