@@ -132,6 +132,7 @@
                                     <th scope="col">Contrato</th>
                                     <th scope="col">Salário</th>
                                     <th scope="col">Sexo</th>
+                                    <th scope="col">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -144,6 +145,16 @@
                                         <td>@f.TipoContrato</td>
                                         <td>@f.Salario.ToString("C")</td>
                                         <td>@(f.Sexo == "M" ? "Masculino" : "Feminino")</td>
+                                        <td>
+                                            <button type="button" class=" btn btn-sm btn-danger" title="Excluir"
+                                                aria-label="Excluir">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-primary" title="Editar"
+                                                aria-label="Editar">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                        </td>
                                     </tr>
                                 }
                             </tbody>

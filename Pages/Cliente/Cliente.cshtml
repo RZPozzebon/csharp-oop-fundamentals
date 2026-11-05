@@ -3,6 +3,9 @@
 @{
     ViewData["Title"] = "Clientes";
 }
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
 
 <div class="row justify-content-center g-4">
 
@@ -12,11 +15,19 @@
             <div class="card-header">
                 <h4 class="mb-0">Cadastrar Cliente</h4>
             </div>
-            <form method="post">
+            <form method="post" class="form-control">
                 <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
                     <div class="mb-3">
                         <label asp-for="Nome" class="form-label">Nome do Cliente</label>
                         <input asp-for="Nome" class="form-control" placeholder="Digite o nome" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Telefone" class="form-label">Telefone</label>
+                        <input asp-for="Telefone" class="form-control" placeholder="Digite o telefone" />
+                        <span asp-validation-for="Telefone" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
@@ -34,8 +45,9 @@
 
                         <div class="form-check">
                             <input type="radio" asp-for="Sexo" value="F" id="feminino" class="form-check-input" />
-                            <label for="feminino" class="form-check-label">Feminino</label>
+                            <label for="feminino" class="form-check-label">Feminino</label>                            
                         </div>
+                        <div><span asp-validation-for="Sexo" class="text-danger"></span></div>
                     </fieldset>
                 </div>
                 <div class="card-footer">
@@ -66,6 +78,7 @@
                                 <th scope="col">Nome</th>
                                 <th scope="col">Endereço</th>
                                 <th scope="col">Sexo</th>
+                                <th scope="col">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -76,6 +89,16 @@
                                     <td>@cliente.Nome</td>
                                     <td>@cliente.Endereco</td>
                                     <td>@(cliente.Sexo == "M" ? "Masculino" : "Feminino")</td>
+                                    <td>
+                                        <button type="button" class=" btn btn-sm btn-danger" title="Excluir"
+                                                aria-label="Excluir">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                        <button type="button" class=" btn btn-sm btn-primary" title="Editar"
+                                                aria-label="Editar">
+                                            <i class="bi bi-pencil"></i>
+                                        </button>
+                                    </td>
                                 </tr>
                             }
                         </tbody>

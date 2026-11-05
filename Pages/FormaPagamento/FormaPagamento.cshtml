@@ -47,7 +47,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nome</th>
+                                <th scope="col" class="mx-1">Nome</th>
                                 <th scope="col">Ações</th>
                             </tr>
                         </thead>
@@ -56,11 +56,17 @@
                             {
                                 <tr>
                                     <td>@Pagamento.Id</td>
-                                    <td>@Pagamento.NomeFormaPagamento</td>
-                                    <td><button type="button" class="btn btn-sm btn-outline-danger" title="Excluir"
+                                    <td class="mx-1">@Pagamento.NomeFormaPagamento</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-danger" title="Excluir"
                                                 aria-label="Excluir">
-                                        <i class="bi bi-trash"></i>
-                                    </button></td>
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-primary" title="Editar"
+                                                aria-label="Editar">
+                                            <i class="bi bi-pencil"></i>
+                                        </button>
+                                    </td>
                                 </tr>
                             }
                         </tbody>

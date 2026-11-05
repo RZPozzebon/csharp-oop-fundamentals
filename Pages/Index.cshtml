@@ -5,5 +5,40 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Seja bem vindo ao Rod’s Pet</h1>
+    <h1 class="display-4-bold">Seja bem vindo ao Rod’s Pet</h1>
 </div>
+
+<div>
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h4 class="mb-0 align-items-center">Agenda do dia</h4>
+    </div>
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            @if (i == 1)
+            {
+                <p class="text-muted text-center my-4">Nenhum funcionário cadastrado ainda.</p>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover mb-0 align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Cliente</th>
+                                <th scope="col">Pet</th>
+                                <th scope="col">Serviço</th>
+                                <th scope="col">Horario</th>
+                                <th scope="col">Concluído</th>
+                            </tr>
+                        </thead>
+                            
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@functions {
+    private int i;
+}

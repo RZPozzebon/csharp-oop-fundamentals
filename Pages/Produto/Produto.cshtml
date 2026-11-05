@@ -56,8 +56,9 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col" class="text-end">Valor</th>
+                                <th scope="col" >Nome</th>
+                                <th scope="col" >Valor</th>
+                                <th scope="col" >Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -66,10 +67,15 @@
                                 <tr>
                                     <td>@produto.Id</td>
                                     <td>@produto.Nome</td>
-                                    <td class="text-end">@produto.Valor.ToString("C")</td>
-                                    <td>
-                                        <button type="button" class=" btn btn-sm btn-outline-danger">
+                                    <td>@produto.Valor.ToString("C")</td>                                    
+                                    <td >
+                                        <button type="button" class=" btn btn-sm btn-danger" title="Excluir"
+                                                aria-label="Excluir">
                                             <i class="bi bi-trash"></i>
+                                        </button>
+                                        <button type="button" class=" btn btn-sm btn-primary" title="Editar"
+                                                aria-label="Editar">
+                                            <i class="bi bi-pencil"></i>
                                         </button>
                                     </td>
                                 </tr>

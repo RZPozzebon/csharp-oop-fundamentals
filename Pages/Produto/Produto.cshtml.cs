@@ -16,11 +16,11 @@ namespace csharp_oop_fundamentals.Pages.Produto
 
         // Campos vindos do formulário (ligados pelos asp-for na view).
         [BindProperty]
-        [Required(ErrorMessage = "Nome do Produto é obrigatório.")]
+        [Required(ErrorMessage = "Produto é obrigatório.")]
         public string Nome { get; set; } = "";
 
         [BindProperty]
-        [Required(ErrorMessage = "Valor do produto é obrigatório.")]
+        [Required(ErrorMessage = "Valor é obrigatório.")]
         [Range(0.01, 999999.99, ErrorMessage = "O preço deve ser maior que zero.")]
         [DisplayFormat(DataFormatString = "{0:N2}", ApplyFormatInEditMode = true)]
         public decimal Valor { get; set; }
